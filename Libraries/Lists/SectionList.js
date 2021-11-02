@@ -193,6 +193,17 @@ export default class SectionList<
   }
 
   /**
+   * Scroll to a specific content pixel offset in the list.
+   *
+   * Check out [scrollToOffset](docs/virtualizedlist.html#scrolltooffset) of VirtualizedList
+   */
+  scrollToOffset(params: {animated?: ?boolean, offset: number}) {
+    if (this._wrapperListRef != null) {
+      this._wrapperListRef.scrollToOffset(params);
+    }
+  }
+
+  /**
    * Tells the list an interaction has occurred, which should trigger viewability calculations, e.g.
    * if `waitForInteractions` is true and the user has not scrolled. This is typically called by
    * taps on items or by navigation actions.

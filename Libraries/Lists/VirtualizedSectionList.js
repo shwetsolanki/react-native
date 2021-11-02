@@ -151,6 +151,25 @@ class VirtualizedSectionList<
     this._listRef.scrollToIndex(toIndexParams);
   }
 
+  scrollToOffset(params: {animated?: ?boolean, offset: number, ...}) {
+    const {animated, offset} = params;
+
+    if (this._listRef == null) {
+      return;
+    }
+
+    if (this._listRef.scrollToOffset == null) {
+      console.warn(
+        'No scrollTo method provided. This may be because you have two nested ' +
+          'VirtualizedLists with the same orientation, or because you are ' +
+          'using a custom component that does not implement scrollTo.',
+      );
+      return;
+    }
+
+    this._listRef.scrollToOffset(params);
+  }
+
   getListRef(): ?React.ElementRef<typeof VirtualizedList> {
     return this._listRef;
   }
